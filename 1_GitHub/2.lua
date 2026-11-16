@@ -39,7 +39,17 @@ local GamePlayTools = require("GameLua.Mod.BaseMod.Common.GamePlayTools")
 local KismetSystemLibrary = import("KismetSystemLibrary")
 local packageName = KismetSystemLibrary.GetGameBundleId()
 
-if packageName ~= "com.tencent.ig" then
+local pubgPkgs = {["com.tencent.ig"] = true,           -- PUBG Mobile Global
+    ["com.pubg.krmobile"] = true,        -- PUBG Mobile Korea/Japan
+    ["com.rekoo.pubgm"] = true,          -- PUBG Mobile Taiwan
+    ["com.vng.pubgmobile"] = true,       -- PUBG Mobile Vietnam
+    ["com.pubg.imobile"] = true,         -- PUBG Mobile India (BGMI)
+    ["com.tencent.tmgp.pubgmhd"] = true, -- Peacekeeper Elite (China)
+    ["com.tencent.igfit"] = true,        -- PUBG Mobile Flash
+    ["com.tencent.iglite"] = true,       -- PUBG Mobile Lite
+}
+
+if not pubgPkgs[packageName] then
     return
 end
 
